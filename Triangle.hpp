@@ -14,7 +14,35 @@ bool rayTriangleIntersect(const Vector3f& v0, const Vector3f& v1,
                           const Vector3f& dir, float& tnear, float& u, float& v)
 {
 
-    return false;
+    // Vector ae = v0 - ve
+    Vector3f ae = v0 - orig;
+    // Vector ab = v0 - v1
+    Vector3f ab = v0 - v1;
+    // Vector ac = v0 - v2
+    Vector3f ac = v0 - v2;
+
+    // using Cramer's rule to solve the linear system
+    // t = |ab ac ae|  / |ab ac dir|
+    // u = |ae ac dir| / |ab ac dir|
+    // v = |ab ae dir| / |ab ac dir|
+
+    // using cross product and dot product to calculate the determinant
+    // det A = |ab, ac, dir| = dot(ab, cross(ac, dir))
+    float det_A = dotProduct(ab, crossProduct(ac, dir));
+
+    // t = |ab, ac, ae| / det A
+    tnear = dotProduct(ab, crossProduct(ac, ae)) / det_A;
+    if (tnear < 0) return false;
+
+    // v = |ab, ae, dir| / det A
+    v = dotProduct(ab, crossProduct(ae, dir)) / det_A;
+    if (v < 0 || v > 1) return false;
+
+    // u = |ae, ac, dir| / det A
+    u = dotProduct(ae, crossProduct(ac, dir)) / det_A;
+    if (u < 0 || u > 1 - v) return false;
+
+    return true;
 }
 
 class Triangle : public Object
