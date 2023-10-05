@@ -1,0 +1,27 @@
+[
+{
+  "directory": "/mnt/Code/8610/cg-hw6/hw6_instructions/CodeBase/build",
+  "command": "/usr/bin/g++   -g -o CMakeFiles/RayTracing.dir/main.cpp.o -c /mnt/Code/8610/cg-hw6/hw6_instructions/CodeBase/main.cpp",
+  "file": "/mnt/Code/8610/cg-hw6/hw6_instructions/CodeBase/main.cpp"
+},
+{
+  "directory": "/mnt/Code/8610/cg-hw6/hw6_instructions/CodeBase/build",
+  "command": "/usr/bin/g++   -g -o CMakeFiles/RayTracing.dir/Vector.cpp.o -c /mnt/Code/8610/cg-hw6/hw6_instructions/CodeBase/Vector.cpp",
+  "file": "/mnt/Code/8610/cg-hw6/hw6_instructions/CodeBase/Vector.cpp"
+},
+{
+  "directory": "/mnt/Code/8610/cg-hw6/hw6_instructions/CodeBase/build",
+  "command": "/usr/bin/g++   -g -o CMakeFiles/RayTracing.dir/Scene.cpp.o -c /mnt/Code/8610/cg-hw6/hw6_instructions/CodeBase/Scene.cpp",
+  "file": "/mnt/Code/8610/cg-hw6/hw6_instructions/CodeBase/Scene.cpp"
+},
+{
+  "directory": "/mnt/Code/8610/cg-hw6/hw6_instructions/CodeBase/build",
+  "command": "/usr/bin/g++   -g -o CMakeFiles/RayTracing.dir/BVH.cpp.o -c /mnt/Code/8610/cg-hw6/hw6_instructions/CodeBase/BVH.cpp",
+  "file": "/mnt/Code/8610/cg-hw6/hw6_instructions/CodeBase/BVH.cpp"
+},
+{
+  "directory": "/mnt/Code/8610/cg-hw6/hw6_instructions/CodeBase/build",
+  "command": "/usr/bin/g++   -g -o CMakeFiles/RayTracing.dir/Renderer.cpp.o -c /mnt/Code/8610/cg-hw6/hw6_instructions/CodeBase/Renderer.cpp",
+  "file": "/mnt/Code/8610/cg-hw6/hw6_instructions/CodeBase/Renderer.cpp"
+}
+]

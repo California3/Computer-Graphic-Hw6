@@ -1,0 +1,3 @@
+/mnt/Code/8610/cg-hw6/hw6_instructions/CodeBase/build/CMakeFiles/RayTracing.dir
+/mnt/Code/8610/cg-hw6/hw6_instructions/CodeBase/build/CMakeFiles/edit_cache.dir
+/mnt/Code/8610/cg-hw6/hw6_instructions/CodeBase/build/CMakeFiles/rebuild_cache.dir
