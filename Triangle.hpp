@@ -224,10 +224,18 @@ inline Intersection Triangle::getIntersection(Ray ray)
     // TODO: find ray triangle intersection
     // set intersected to true if an intersection happened
     // set dist to intersection distance
+    float t, u, v;
+    intersected = rayTriangleIntersect(this->v0, this->v1, this->v2, ray.origin, ray.direction, t, u, v);
 
 
     // Fill in these values only if intersected, otherwise leave as default
     if (intersected) {
+        dist = t;
+        Vector3f normal = this->normal;
+        Material *m = this->m;
+        ray.t = t;
+
+
         inter.distance = dist;
         inter.obj= this;
         inter.happened = true;

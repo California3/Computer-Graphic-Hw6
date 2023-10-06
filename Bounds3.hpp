@@ -82,9 +82,40 @@ inline bool Bounds3::IntersectP(const Ray& ray, const Vector3f& invDir,
     // invDir: ray direction(x,y,z), invDir=(1.0/x,1.0/y,1.0/z), use this because Multiply is faster that Division
     // dirIsNeg: ray direction(x,y,z), dirIsNeg=[int(x>0),int(y>0),int(z>0)], use this to simplify your logic
     // TODO: return if ray bound intersects
-    
-    return false;
-    
+
+    // check direction sign for physical correctness so that t_min and t_max calculated only once. And make sure real t is non-negative.
+    float t_xmin, t_xmax, t_ymin, t_ymax, t_zmin, t_zmax;
+    // intersect with x plane
+    if (dirIsNeg[0] == 1){ // ray direction is positive, should from pMin.x to pMax.x
+        t_xmin = (pMin.x - ray.origin.x) * invDir.x;
+        t_xmax = (pMax.x - ray.origin.x) * invDir.x;
+    }else{ // ray direction is negative or none, should from pMax.x to pMin.x
+        t_xmin = (pMax.x - ray.origin.x) * invDir.x;
+        t_xmax = (pMin.x - ray.origin.x) * invDir.x;
+    }
+
+    // intersect with y plane
+    if (dirIsNeg[1] == 1){ // ray direction is positive, should from pMin.y to pMax.y
+        t_ymin = (pMin.y - ray.origin.y) * invDir.y;
+        t_ymax = (pMax.y - ray.origin.y) * invDir.y;
+    }else{ // ray direction is negative or none, should from pMax.y to pMin.y
+        t_ymin = (pMax.y - ray.origin.y) * invDir.y;
+        t_ymax = (pMin.y - ray.origin.y) * invDir.y;
+    }
+
+    // intersect with z plane
+    if (dirIsNeg[2] == 1){ // ray direction is positive, should from pMin.z to pMax.z
+        t_zmin = (pMin.z - ray.origin.z) * invDir.z;
+        t_zmax = (pMax.z - ray.origin.z) * invDir.z;
+    }else{ // ray direction is negative or none, should from pMax.z to pMin.z
+        t_zmin = (pMax.z - ray.origin.z) * invDir.z;
+        t_zmax = (pMin.z - ray.origin.z) * invDir.z;
+    }
+
+    float t_enter = fmax(fmax(t_xmin, t_ymin),t_zmin);
+    float t_exit = fmin(fmin(t_xmax, t_ymax),t_zmax);
+
+    return (t_enter < t_exit && t_exit >= 0);
 }
 
 inline Bounds3 Union(const Bounds3& b1, const Bounds3& b2)

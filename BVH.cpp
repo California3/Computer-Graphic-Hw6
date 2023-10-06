@@ -53,10 +53,36 @@ BVHBuildNode* BVHAccel::recursiveBuild(std::vector<Object*> objects, int dim)
         // TODO: modify this function to make rendering faster, e.g. using k-d tree
         // hint: make use of dim variable
 
-        std::sort(objects.begin(), objects.end(), [](auto f1, auto f2) {
-                return f1->getBounds().Centroid().x <
-                       f2->getBounds().Centroid().x;
-            });
+        // Updated Method
+        // Time taken: 0 hours
+        //   : 0 minutes
+        //   : 6 ~ 8 seconds
+        if(dim%3==0){ 
+            std::sort(objects.begin(), objects.end(), [](auto f1, auto f2) {
+                    return f1->getBounds().Centroid().x <
+                        f2->getBounds().Centroid().x;
+                });
+        }else if(dim%3==1){
+            std::sort(objects.begin(), objects.end(), [](auto f1, auto f2) {
+                    return f1->getBounds().Centroid().y <
+                        f2->getBounds().Centroid().y;
+                });
+        }else{
+            std::sort(objects.begin(), objects.end(), [](auto f1, auto f2) {
+                    return f1->getBounds().Centroid().z <
+                        f2->getBounds().Centroid().z;
+                });
+        }
+        dim += 1;
+
+        // Original Method
+        // Time taken: 0 hours
+        //   : 0 minutes
+        //   : 26 ~ 27 seconds
+        // std::sort(objects.begin(), objects.end(), [](auto f1, auto f2) {
+        //         return f1->getBounds().Centroid().x <
+        //             f2->getBounds().Centroid().x;
+        //     });
 
         auto beginning = objects.begin();
         auto middling = objects.begin() + (objects.size() / 2);
@@ -98,8 +124,24 @@ Intersection BVHAccel::getIntersection(BVHBuildNode* node, const Ray& ray) const
 
     // TODO: Traverse the BVH to find intersection. you might want to call Bounds3::IntersectP, 
     // or Object::getIntersection, or recursively BVHAccel::getIntersection
-
+    
+    if(node->bounds.IntersectP(ray, indiv, dirIsNeg)){
+        if(node->left == nullptr && node->right == nullptr){
+            return node->object->getIntersection(ray);
+        }
+        else{
+            Intersection left = BVHAccel::getIntersection(node->left, ray);
+            Intersection right = BVHAccel::getIntersection(node->right, ray);
+            if(left.happened && right.happened){
+                return left.distance < right.distance ? left : right;
+            }
+            else if(left.happened){
+                return left;
+            }
+            else if(right.happened){
+                return right;
+            }
+        }
+    }
     return null_inter; // return null intersection in case ray does not intersect with bounding box
-
-
 }
