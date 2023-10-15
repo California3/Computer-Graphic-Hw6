@@ -1,18 +1,19 @@
-
-# Consider dependencies only in project.
-set(CMAKE_DEPENDS_IN_PROJECT_ONLY OFF)
-
 # The set of languages for which implicit dependencies are needed:
 set(CMAKE_DEPENDS_LANGUAGES
+  "CXX"
   )
+# The set of files for implicit dependencies of each language:
+set(CMAKE_DEPENDS_CHECK_CXX
+  "/workspaces/Computer-Graphic-Hw6/BVH.cpp" "/workspaces/Computer-Graphic-Hw6/build/CMakeFiles/RayTracing.dir/BVH.cpp.o"
+  "/workspaces/Computer-Graphic-Hw6/Renderer.cpp" "/workspaces/Computer-Graphic-Hw6/build/CMakeFiles/RayTracing.dir/Renderer.cpp.o"
+  "/workspaces/Computer-Graphic-Hw6/Scene.cpp" "/workspaces/Computer-Graphic-Hw6/build/CMakeFiles/RayTracing.dir/Scene.cpp.o"
+  "/workspaces/Computer-Graphic-Hw6/Vector.cpp" "/workspaces/Computer-Graphic-Hw6/build/CMakeFiles/RayTracing.dir/Vector.cpp.o"
+  "/workspaces/Computer-Graphic-Hw6/main.cpp" "/workspaces/Computer-Graphic-Hw6/build/CMakeFiles/RayTracing.dir/main.cpp.o"
+  )
+set(CMAKE_CXX_COMPILER_ID "GNU")
 
-# The set of dependency files which are needed:
-set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/mnt/Code/8610/cg-hw6/hw6_instructions/CodeBase/BVH.cpp" "CMakeFiles/RayTracing.dir/BVH.cpp.o" "gcc" "CMakeFiles/RayTracing.dir/BVH.cpp.o.d"
-  "/mnt/Code/8610/cg-hw6/hw6_instructions/CodeBase/Renderer.cpp" "CMakeFiles/RayTracing.dir/Renderer.cpp.o" "gcc" "CMakeFiles/RayTracing.dir/Renderer.cpp.o.d"
-  "/mnt/Code/8610/cg-hw6/hw6_instructions/CodeBase/Scene.cpp" "CMakeFiles/RayTracing.dir/Scene.cpp.o" "gcc" "CMakeFiles/RayTracing.dir/Scene.cpp.o.d"
-  "/mnt/Code/8610/cg-hw6/hw6_instructions/CodeBase/Vector.cpp" "CMakeFiles/RayTracing.dir/Vector.cpp.o" "gcc" "CMakeFiles/RayTracing.dir/Vector.cpp.o.d"
-  "/mnt/Code/8610/cg-hw6/hw6_instructions/CodeBase/main.cpp" "CMakeFiles/RayTracing.dir/main.cpp.o" "gcc" "CMakeFiles/RayTracing.dir/main.cpp.o.d"
+# The include file search paths:
+set(CMAKE_CXX_TARGET_INCLUDE_PATH
   )
 
 # Targets to which this target links.
